@@ -26,8 +26,8 @@ using namespace glm;
 // -------------------------------------------------
 // Global Variables
 // -------------------------------------------------
-int Width = 1280;
-int Height = 720;
+int Width = 512;
+int Height = 512;
 std::vector<float> OutputImage;
 Scene scene;
 // -------------------------------------------------

@@ -1,5 +1,4 @@
-﻿  Camera.cpp
-  Main_EmptyViewer.cpp
+﻿  Main_EmptyViewer.cpp
   GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
   GLM: rotate_slow function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
   GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
@@ -14,10 +13,4 @@
   GLM: angleAxis function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
 C:\Users\monrin\Downloads\cg_code\EmptyViewer\Main_EmptyViewer.cpp(69,31): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Users\monrin\Downloads\cg_code\EmptyViewer\Main_EmptyViewer.cpp(69,28): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Plane.cpp
-  Ray.cpp
-  Scene.cpp
-  Sphere.cpp
-  Surface.cpp
-  코드를 생성하고 있습니다...
   EmptyViewer.vcxproj -> C:\Users\monrin\Downloads\cg_code\bin\EmptyViewer.exe
