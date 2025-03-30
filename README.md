@@ -1,55 +1,52 @@
-# Ray Tracer
+OpenGL Viewer
+개요
+OpenglViewer는 OpenGL, GLFW, GLEW를 사용하여 만든 기본적인 레이 트레이싱 뷰어입니다. 이 애플리케이션은 카메라, 객체(구와 평면 등), 광원과 함께 씬을 렌더링합니다. 카메라에서 씬으로 레이를 발사하고, 각 픽셀마다 여러 샘플을 찍어 색을 평균화하여 이미지를 생성합니다.
 
-## 📌 Project Overview
-This project implements a basic **Ray Tracer** that renders a scene containing a plane and multiple spheres. The ray tracing algorithm calculates intersections between rays and objects in the scene to determine the final color at each pixel.
+프로젝트 구조
+main.cpp: 렌더링 루프와 OpenGL 컨텍스트를 처리하는 진입점.
 
-## ⚙️ Compilation & Run Instructions
-### Prerequisites
-Make sure you have the following installed:
-- **C++ Compiler** (GCC, Clang, or MSVC)
-- **CMake** (Optional but recommended)
-- **GLM** (OpenGL Mathematics Library)
-- **SDL2** (For displaying the rendered image, if applicable)
+Ray.h, Ray.cpp: 레이 클래스 정의 및 레이 생성 로직.
 
-### 🔧 Compilation
-#### Using g++ (Linux/macOS)
-```sh
-g++ -o raytracer main.cpp Camera.cpp Scene.cpp Sphere.cpp Plane.cpp Ray.cpp -std=c++17 -I./include -lSDL2
-```
-#### Using Visual Studio (Windows)
-1. Open the solution file in Visual Studio.
-2. Build the project using `Ctrl + Shift + B`.
+Camera.h, Camera.cpp: 카메라 클래스 정의, 각 픽셀에 대한 레이 생성.
 
-#### Using CMake
-```sh
-mkdir build && cd build
-cmake ..
-make
-```
+Scene.h, Scene.cpp: 씬 내 객체 및 광원 관리.
 
-### ▶️ Running the Program
-```sh
-./raytracer
-```
+Plane.h, Plane.cpp: 평면 객체 정의.
 
-## 📦 Additional Libraries
-This project requires:
-- **GLM**: Math operations for ray calculations.
-- **SDL2** (optional): Used to display the final rendered image.
+Sphere.h, Sphere.cpp: 구 객체 정의.
 
-## 🎯 Features
-- **Perspective Camera**: Defines rays based on image resolution and view frustum.
-- **Ray-Object Intersection**:
-  - Plane (y = -2)
-  - Spheres at predefined positions
-- **Shading (Phong Model)**: Basic shading using ambient, diffuse, and specular components.
+Light.h, Light.cpp: 광원 정의.
 
-## 🚀 Scene Description
-- **Plane**: y = -2
-- **Spheres**:
-  - **S1**: Center (-4, 0, -7), Radius 1
-  - **S2**: Center (0, 0, -7), Radius 2
-  - **S3**: Center (4, 0, -7), Radius 1
-- **Camera**: Located at (0,0,0), looking along -w direction.
+필요 라이브러리
+GLEW: OpenGL 확장 로딩 라이브러리.
 
+GLFW: 창 생성 및 입력 처리 라이브러리.
 
+GLM: 수학 연산을 위한 라이브러리 (벡터, 행렬 등).
+
+빌드 및 실행
+Windows에서의 설정
+Visual Studio 설치: 프로젝트는 Visual Studio에서 열고 빌드할 수 있습니다.
+
+GLEW 설치: GLEW 라이브러리를 설치하고, 프로젝트에 포함시켜야 합니다.
+
+GLFW 설치: GLFW 라이브러리도 마찬가지로 설치 후 프로젝트에 포함시킵니다.
+
+빌드 방법
+Visual Studio를 열고, OpenglViewer.sln 파일을 엽니다.
+
+필요한 라이브러리 경로(GLEW, GLFW, GLM)를 설정합니다.
+
+빌드를 시작하여 프로젝트를 컴파일합니다.
+
+실행 방법
+빌드가 완료되면 실행 파일을 실행하여 렌더링 결과를 확인할 수 있습니다.
+
+윈도우 창에서 렌더링된 이미지를 실시간으로 볼 수 있습니다.
+
+기능
+카메라 위치를 설정하고 씬의 객체를 렌더링합니다.
+
+레이 트레이싱을 사용하여 각 픽셀에 대해 색을 계산하고 이미지를 생성합니다.
+
+다양한 객체와 광원 설정이 가능하여 실험적인 씬을 만들 수 있습니다.
