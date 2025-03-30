@@ -20,6 +20,7 @@
 #include"Scene.h"
 #include"Plane.h"
 #include"Sphere.h"
+#include"Light.h"
 
 using namespace glm;
 
@@ -44,15 +45,20 @@ void render()
 	//Instead we draw to another buffer and copy this to the 
 	//framebuffer using glDrawPixels(...) every refresh`
 	OutputImage.clear();
-	Surface* plane = new Plane(vec3(0.0f, 1.0f, 0.0f), vec3(.0f, -2.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f));//흰 평면
-	Surface* shpere = new Sphere(vec3(-4.0f, 0.0f, -7.0f), 1.0f, vec3(1.0f, 0.0f, 0.0f));//빨간 구
-	Surface* shpere2 = new Sphere(vec3(0.0f, 0.0f, -7.0f), 2.0f, vec3(0.0f, 1.0f, 0.0f));//초록 구
-	Surface* shpere3 = new Sphere(vec3(4.0f, 0.0f, -7.0f), 1.0f, vec3(0.0f, 0.0f, 1.0f));//파란 구
+	Surface* plane = new Plane(vec3(0.0f, 1.0f, 0.0f), vec3(.0f, -2.0f, 0.0f), vec3(1.0f, 1.0f, 1.0f), vec3(0.2f, 0.2f, 0.2f), vec3(1.0f, 1.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), 0);//흰 평면
+	Surface* shpere = new Sphere(vec3(-4.0f, 0.0f, -7.0f), 1.0f, vec3(1.0f, 0.0f, 0.0f), vec3(0.2f, 0.0f, 0.0f), vec3(1.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), 0);//빨간 구
+	Surface* shpere2 = new Sphere(vec3(0.0f, 0.0f, -7.0f), 2.0f, vec3(0.0f, 1.0f, 0.0f), vec3(0.0f, 0.2f, 0.0f), vec3(0.0f, 0.5f, 0.0f), vec3(0.5f, 0.5f, 0.5f), 32);//초록 구
+	Surface* shpere3 = new Sphere(vec3(4.0f, 0.0f, -7.0f), 1.0f, vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 0.0f, 0.2f), vec3(0.0f, 0.0f, 1.0f), vec3(0.0f, 0.0f, 0.0f), 0);//파란 구
+	Light light(vec3(-4.0f, 4.0f, -3.0f), vec3(1.0f, 1.0f, 1.0f), 1);
+
+	Camera camera(vec3(0.0f, 0.0f, 0.0f));
+	scene.addLight(&light);
 	scene.addObject(plane);
 	scene.addObject(shpere);
 	scene.addObject(shpere2);
 	scene.addObject(shpere3);
-	Camera camera(vec3(0.0f, 0.0f, 0.0f));
+	
+
 	for (int j = 0; j < Height; ++j) 
 	{
 		for (int i = 0; i < Width; ++i) 
