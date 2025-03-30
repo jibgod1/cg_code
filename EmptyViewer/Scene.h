@@ -5,10 +5,12 @@
 #include "Surface.h"
 #include "Light.h"
 
+
 class Scene {
 private:
     std::vector<Surface*> objects;
     std::vector<Light*> lights;
+   
 public:
     void addObject(Surface* object) {
         objects.push_back(object);

@@ -23,6 +23,7 @@
 #include"Light.h"
 
 using namespace glm;
+const int SAMPLE = 64;
 
 // -------------------------------------------------
 // Global Variables
@@ -57,7 +58,6 @@ void render()
 	scene.addObject(shpere);
 	scene.addObject(shpere2);
 	scene.addObject(shpere3);
-	
 
 	for (int j = 0; j < Height; ++j) 
 	{
@@ -72,8 +72,21 @@ void render()
 			 
 			
 
-			Ray ray = camera.getRay(i, j);
-			color = scene.trace(ray);
+			for (int sample = 0; sample < SAMPLE; ++sample)
+			{
+				// 랜덤한 오프셋을 생성하여 여러 샘플을 찍음
+				float tx = (rand() % RAND_MAX) / RAND_MAX - 0.5f;
+				float ty = (rand() % RAND_MAX) / RAND_MAX - 0.5f;
+
+				// 각 픽셀에 대해 랜덤 레이 생성
+				Ray ray = camera.getRay(i + tx, j + ty);
+
+				// 레이를 사용하여 색상 계산
+				color += scene.trace(ray);
+			}
+
+			// 평균값으로 최종 색상 결정
+			color /= static_cast<float>(SAMPLE);
 
 			
 
